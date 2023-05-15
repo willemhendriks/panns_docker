@@ -8,6 +8,23 @@ The codebase is developed with Python 3.7. Install requirements as follows:
 pip install -r requirements.txt
 ```
 
+
+## Classes
+
+https://github.com/qiuqiangkong/audioset_tagging_cnn/blob/master/metadata/class_labels_indices.csv
+
+
+## Inside Docker (With Dockerfile)
+
+CHECKPOINT_PATH="/networks/Cnn14_mAP=0.431.pth"
+MODEL_TYPE="Cnn14"
+CUDA_VISIBLE_DEVICES=0 python3 pytorch/inference.py audio_tagging \
+    --model_type=$MODEL_TYPE \
+    --checkpoint_path=$CHECKPOINT_PATH \
+    --audio_path="/example_files/clapping.wav" \
+    --cuda
+
+
 ## Audio tagging using pretrained models
 Users can inference the tags of an audio recording using pretrained models without training. Details can be viewed at [scripts/0_inference.sh](scripts/0_inference.sh) First, downloaded one pretrained model from https://zenodo.org/record/3987831, for example, the model named "Cnn14_mAP=0.431.pth". Then, execute the following commands to inference this [audio](resources/R9_ZSCveAHg_7s.wav):
 ```
